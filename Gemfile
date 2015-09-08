@@ -43,3 +43,7 @@ group :development, :test do
   gem 'spring'
 end
 
+group :development do
+  gem 'hirb'
+  gem 'hirb-unicode'
+end
