@@ -25,12 +25,13 @@ class EntriesController < ApplicationController
   # POST /entries
   # POST /entries.json
   def create
-    @entry = Entry.new(entry_params)
+    @blog = Blog.find(params[:blog_id])
+    @entry = @blog.entries.build(entry_params)
 
     respond_to do |format|
       if @entry.save
-        format.html { redirect_to @entry, notice: 'Entry was successfully created.' }
-        format.json { render :show, status: :created, location: @entry }
+        format.html { redirect_to [@blog, @entry], notice: 'Entry was successfully created.' }
+        format.json { render :show, status: :created, location: [@blog, @entry] }
       else
         format.html { render :new }
         format.json { render json: @entry.errors, status: :unprocessable_entity }
