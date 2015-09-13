@@ -14,7 +14,8 @@ class EntriesController < ApplicationController
 
   # GET /entries/new
   def new
-    @entry = Entry.new
+    @blog = Blog.find(params[:blog_id])
+    @entry = @blog.entries.build
   end
 
   # GET /entries/1/edit
@@ -65,6 +66,7 @@ class EntriesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_entry
       @entry = Entry.find(params[:id])
+      @blog = Blog.find(params[:blog_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
