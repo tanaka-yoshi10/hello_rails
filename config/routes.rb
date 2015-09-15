@@ -1,9 +1,7 @@
 Rails.application.routes.draw do
-  get 'comments_controller/create'
-
   resources :blogs do
-    resources :entries do
-      resources :comments do
+    resources :entries, :except => :index do
+      resources :comments, :only => [:create, :destroy]  do
         member do
           put 'approve'
         end
