@@ -13,9 +13,22 @@ class CommentsController < ApplicationController
     end
   end
 
+  def approve
+    @entry = Entry.find(params[:entry_id])
+    @comment = Comment.find(params[:id])
+    @comment.status = "approved"
+
+    if @comment.save
+      redirect_to [@entry.blog, @entry], notice: 'Comment was successfully approved.'
+    else
+      redirect_to [@entry.blog, @entry]
+    end
+
+  end
+
   private
   def set_comment
-    @entry = Entry.find(params[:id])
+    @comment = Comment.find(params[:id])
   end
 
   def comment_params

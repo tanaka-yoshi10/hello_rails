@@ -3,7 +3,11 @@ Rails.application.routes.draw do
 
   resources :blogs do
     resources :entries do
-      resources :comments
+      resources :comments do
+        member do
+          put 'approve'
+        end
+      end
     end
   end
 
