@@ -13,6 +13,12 @@ class CommentsController < ApplicationController
     end
   end
 
+  def destroy
+    @comment.destroy
+    @entry = Entry.find(params[:entry_id])
+    redirect_to [@entry.blog, @entry], notice: 'Comment was successfully destroyed.'
+  end
+
   def approve
     @entry = Entry.find(params[:entry_id])
     @comment = Comment.find(params[:id])

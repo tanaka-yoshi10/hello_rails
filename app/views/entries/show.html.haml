@@ -31,7 +31,7 @@
       %tr
         %td<= comment.approved? ? comment.body : "(承認待ち)"
         %td<= comment.approved? ? "" : link_to("approve", approve_blog_entry_comment_path(@entry.blog, @entry, comment), :method => :put)
-        %td Destroy
+        %td<= link_to 'Destroy', [@entry.blog, @entry, comment], method: :delete, data: { confirm: 'Are you sure?' }
 
 %h1 New Comment
 = form_for([@entry.blog, @entry, @entry.comments.build]) do |f|
