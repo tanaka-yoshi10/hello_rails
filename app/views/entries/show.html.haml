@@ -29,7 +29,7 @@
   %tbody
     - @entry.comments.each do |comment|
       %tr
-        %td<= comment.body
+        %td<= comment.approved? ? comment.body : "(承認待ち)"
         %td<= comment.status
 
 %h1 New Comment
