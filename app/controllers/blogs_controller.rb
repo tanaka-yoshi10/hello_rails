@@ -20,7 +20,7 @@ class BlogsController < ApplicationController
     if @blog.save
       redirect_to @blog, notice: 'Blog was successfully created.'
     else
-      redirect_to render :new
+      render :new
     end
   end
 
