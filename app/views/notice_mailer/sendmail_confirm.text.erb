@@ -7,4 +7,4 @@ Blog: <%= @comment.entry.blog.title %>
 Entry: <%= @comment.entry.title %>
 Comment: <%= @comment.body %>
 
-URL: http://(your host)/blogs/2/entries/3
+URL: <%= blog_entry_url(@comment.entry.blog, @comment.entry) %>

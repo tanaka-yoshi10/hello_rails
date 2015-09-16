@@ -1,10 +1,12 @@
-コメント：
+コメント：<br/>
 新しいコメントが登録されました。
-
+<br/>
 承認または削除してください。
-
+<br/>
 Blog: <%= @comment.entry.blog.title %>
+<br/>
 Entry: <%= @comment.entry.title %>
+<br/>
 Comment: <%= @comment.body %>
-
-URL: http://(your host)/blogs/2/entries/3
+<br/>
+URL: <%= link_to "here", blog_entry_url(@comment.entry.blog, @comment.entry) %>
