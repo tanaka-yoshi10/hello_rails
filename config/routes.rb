@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root 'blogs#index'
+
   resources :blogs do
     resources :entries, :except => :index do
       resources :comments, :only => [:create, :destroy]  do
